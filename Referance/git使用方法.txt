@@ -1,0 +1,7 @@
+開啟 Termimal
+輸入 git commit -m "Initial commit"
+點左邊藍色按鈕
+
+
+
+bs tab tab
