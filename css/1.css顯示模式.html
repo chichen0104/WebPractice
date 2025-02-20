@@ -3,28 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-
 </head>
 
 <body>
-    <!--#region 顯示模式 Block-->
 
+    <!--#region 顯示模式:區塊模式(block)-->
     <h1 style="background-color: red;">這是標題h1</h1>
-    <h2>這是文字h2</h2>
-    <h3>這是文字h3</h3>
-    <h4>這是文字h4</h4>
-    <h5>這是文字h5</h5>
-    <h6>這是文字h6</h6>
-    <div>這是div</div>
-    <p>這是p</p>
+    <h2>h2是區塊</h2>
+    <h3>h3是區塊</h3>
+    <h4>h4是區塊</h4>
+    <h5>h5是區塊</h5>
+    <h6>h6是區塊</h6>
+    <div>div是區塊</div>
+    <p>p是區塊</p>
     <ul>
-        <li> 這是li</li>
-        <li> 這是li</li>
-        <li> 這是li</li>
+        <li>li是區塊</li>
+        <li>li是區塊</li>
+        <li>li是區塊</li>
     </ul>
     <table>
         <thead>
@@ -56,20 +54,21 @@
             </tr>
         </tbody>
     </table>
-    
+
     <!--#endregion-->
 
-
-
-    <!--顯示模式 inline-->
+    <!--#region 顯示模式:內行模式(inline)-->
     <span>
-        這是span
+        這是span是內行
     </span>
-    <a>這是連結</a>
-    <img src="https://picsum.photos/300/200" alt="隨機風景">
+    <a>這是連結是內行</a>
+    <img src="https://picsum.photos/300/200"
+         alt="隨機風景">
     <!--#endregion-->
 
-
+    <!--#region 顯示模式:隱藏-->
+    <div>這段文字<span style="display: none;">我是文字</span>被隱藏</div>
+    <!--#endregion-->
 
 </body>
 

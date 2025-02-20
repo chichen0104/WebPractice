@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+input,
+select,
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 250px;
+    box-sizing: border-box;
+    /* 確保 padding 不影響 width */
+    appearance: none;
+    /* 移除瀏覽器預設樣式 */
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}
