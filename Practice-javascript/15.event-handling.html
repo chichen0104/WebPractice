@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript：事件處理</title>
+    <style>
+        .btn {
+            padding: 8px;
+            background-color: #ffcccc;
+            border-radius: 5px;
+            cursor: pointer;
+            /*滑鼠游標 */
+            border: solid .5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 事件測試 -->
+    <button onclick="console.log('點擊事件')" onmouseover="console.log('滑鼠移入')" onmouseout="console.log('滑鼠移出')"
+        onmousedown="console.log('滑鼠按住')" onmouseup="console.log('滑鼠放開')">點我</button>
+
+    <!-- 用span做一顆按鈕 -->
+    <span class="btn" onmouseover="over(this)" onmouseout="out(this)" onmousedown="down(this)"
+        onmouseup="up(this)">點我啦</span>
+
+
+    <script>
+        function change(elem) {
+            elem.innerHTML = "YA";
+        }
+
+        function over(elem) {
+            elem.style.backgroundColor = "#eebbbb";
+        }
+        function out(elem) {
+            elem.style.backgroundColor = "#ffcccc";
+        }
+        function up(elem) {
+            elem.style.fontWeight = "normal";
+        }
+        function down(elem) {
+            elem.style.fontWeight = "bold";
+        } 
+    </script>
+</body>
+
+</html>

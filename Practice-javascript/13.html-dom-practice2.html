@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript：HTML DOM網頁戶面操作及演練2</title>
+    <style>
+        .text {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>HTML DOM 畫面操作</h3>
+    <div id="content">練習網頁畫面的操作</div>
+    <button onclick="change();">點我</button>
+    <script>
+        function change() {
+            let elem = document.querySelector("#content");
+            console.log(elem);
+            //改變content的顯示文字
+            elem.innerHTML = "練習網頁畫面的操作成功";
+            //改變content的文字大小
+            elem.style.fontSize = "24px";
+            //改變content的顏色
+            elem.style.color = "red";
+            //改變class名稱，可以達到套用syle
+            elem.className = "text";
+        }
+    </script>
+</body>
+
+</html>
