@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //建立函式
+        function Test() {
+            console.log("Hello");
+            console.log("Hello");
+        }
+        //呼叫函式
+        Test();
+
+        //建立帶參數函式1
+        function show(message) {
+            console.log(message);
+        }
+        //呼叫帶參數函式1
+        show("Hello Para function");
+
+        //除法
+        function divide(num1, num2) {
+            let result = num1 / num2;
+            console.log(result);
+        }
+        //呼叫除法
+        divide(10, 5);//2
+        divide(3, 2);//1.5
+        divide("Hello", "World");//NaN (Not a Number)
+
+        //加法
+        function add(num1, num2) {
+            let result = num1 + num2;
+            console.log(result);
+        }
+        //呼叫加法
+        add("Hello", "World");//HelloWorld
+
+
+        //將函式變數化
+        let dividefunc = function (num1, num2) {
+            let result = num1 / num2;
+            console.log(result);
+        };
+        dividefunc(10, 5);
+
+    </script>
+</body>
+
+</html>
