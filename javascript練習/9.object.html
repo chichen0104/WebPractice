@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //1.建立物件(一般方式)
+        let man = new Object();
+        //建立物件的屬性
+        man.name = "A";
+        man.age = 18;
+        //建立物件的方法
+        man.show = function () {
+            console.log("我是", this.name + "年齡", this.age);
+        }
+        console.log(man);
+        console.log(man.name);//A
+        console.log(man.age);//18
+        man.show();//我是 A年齡 18
+
+        //2.建立物件(JSON 物件表示法)用大誇號
+        let woman = {
+            //建立物件的屬性
+            name: "A",
+            age: 13,
+            //建立物件的方法
+            show: function () {
+                console.log("我是", this.name + "年齡", this.age);
+            }
+        }
+        console.log(woman);
+        console.log(woman.name);//A
+        console.log(woman.age);//18
+        woman.show();//我是 A年齡 18
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

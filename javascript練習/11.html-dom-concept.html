@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML DOM 核心概念</title>
+</head>
+
+<body>
+
+    <script>
+
+        //概念:
+        // 每個 HTML 標籤在 JavaScript 引擎中都有對應的標籤物件，稱為 HTML Element。
+        // 把 HTML 標籤物件串再一起，成為物件結構，就是HTML DOM。
+        // HTML DOM (Document Object Model)
+        // 操作JavaScript 就是操作HTML DOM
+
+        //順序:
+        // 1 .瀏覽器把HTML載入到JavaScript核心引擎 
+        // 2. JavaScript核心引擎把每個標籤都變成物件(HTML Element) 
+        // 3. 再把所有物件組合起來變成HTML DOM
+        // 4. 再顯示在畫面
+        // HTML Code->HTML DOM ->網頁畫面
+
+        //操作DOM:
+        //HTML DOM = window物件(瀏覽器內建的物件，HTML DOM的入口)
+        //Window(DOM Root) -> screen / document 
+
+        //window
+        console.log("認識window", window);
+        console.log("取得瀏覽器當前寬度/高度", window.innerWidth, window.innerHeight);
+        // window.prompt("輸入資料", "預設值");
+        // window.alert("彈出警告");
+
+        //window screen
+        console.log("認識screen", window.screen);
+        console.log("取得螢幕寬度/高度", window.screen.width, window.screen.height);
+        //window location
+        console.log("認識location", window.location);
+        console.log("取得網址列的內容", window.location.href);
+
+        //window document/document
+        console.log("認識document", window.document);
+        console.dir(document);
+        console.log("取得網頁標題", document.title);
+        document.title = "新標題";
+        console.log("取得網頁標題", document.title);
+
+        //document body
+        console.log("取得body標籤", document.body);
+        console.log("取得body標籤的內文", document.body.innerHTML);
+        document.body.innerHTML = "Hello"
+    </script>
+
+</body>
+
+</html>

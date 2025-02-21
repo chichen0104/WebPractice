@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="content">一段文字</div>
+
+    <Script>
+        console.log(document);
+        let body = document.body;
+        console.log(body.innerHTML);
+        //使用id搜尋
+        console.log(body.querySelector("#content"));
+        console.log(body.querySelector("#content").innerHTML);
+
+        let divElement = body.querySelector("#content");
+        divElement.innerHTML = "這是新的字";
+        divElement.className = "welcome"; //class="welcom"
+        divElement.style.fontSize = "30px";
+        divElement.style.color = "red";
+
+
+
+
+    </Script>
+</body>
+
+</html>

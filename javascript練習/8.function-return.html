@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //js不會在function前面寫回傳值類型，直接回傳即可
+
+        //什麼東西都沒有的回傳
+        function test() {
+            return;
+        }
+        let testResult = test();
+        console.log(testResult);//undefined
+
+        //回傳數字
+        function test3() {
+            return 3;
+        }
+        testResult = test3();
+        console.log(testResult);//3
+
+
+        //回傳運算結果
+        let addfunc = function (num1, num2) {
+            let result = num1 + num2;
+            return result;
+        }
+        let result = addfunc(3, 2);
+        console.log(result);
+
+
+    </script>
+
+
+</body>
+
+</html>
