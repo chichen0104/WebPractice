@@ -4,14 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript：AJAX 網路連線實務</title>
 </head>
 
 <body>
 
 
+    <div></div>
 
 
+    <script>
+
+        // https://cpweng.github.io/live-records-samples/data/products.json
+
+        // 網址的組成 通訊協定(Protocal):主機名稱(HostName)/路徑(Path)
+        // 初期稱作(AJAX) Asynchronous JavaScript And XML 技術
+        // 中期使用(XHR)XMLHttpRequest物件，稱為XHR技術
+        // 近年，建議採用最新的fetch函式來執行網路連線功能
+
+        // 取得純文字回應
+        function getTextData(url) {
+
+            fetch(url).then(function (response) {
+                return response.text();
+            }).then(function (data) {
+                console.log(data);
+            })
+
+        };
+        // 取得Json格式回應
+        function getJsonData(url) {
+
+            fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+            });
+
+        }
+
+
+
+    </script>
 
 
 
