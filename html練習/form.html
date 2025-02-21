@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用戶註冊與聯繫表單 - CSS Class 版</title>
+    <style>
+        .title {
+            text-align: center;
+        }
+
+        .form-table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        .form-table td {
+            padding: 8px;
+            border: 1px solid black;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="title">用戶註冊與聯繫表單</h2>
+    <form>
+        <table class="form-table">
+            <tr>
+                <td><label for="fullName">姓名:</label></td>
+                <td><input type="text" id="fullName" name="fullName"></td>
+            </tr>
+            <tr>
+                <td><label for="email">電子郵件:</label></td>
+                <td><input type="email" id="email" name="email"></td>
+            </tr>
+            <tr>
+                <td><label for="phone">手機號碼:</label></td>
+                <td><input type="tel" id="phone" name="phone"></td>
+            </tr>
+            <tr>
+                <td><label for="username">帳號:</label></td>
+                <td><input type="text" id="username" name="username"></td>
+            </tr>
+            <tr>
+                <td><label for="password">密碼:</label></td>
+                <td><input type="password" id="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><label for="birthdate">出生日期:</label></td>
+                <td><input type="date" id="birthdate" name="birthdate"></td>
+            </tr>
+            <tr>
+                <td><label for="meeting">預約時間:</label></td>
+                <td><input type="datetime-local" id="meeting" name="meeting"></td>
+            </tr>
+            <tr>
+                <td><label>性別:</label></td>
+                <td>
+                    <input type="radio" name="gender" value="male"> 男
+                    <input type="radio" name="gender" value="female"> 女
+                </td>
+            </tr>
+            <tr>
+                <td><label>興趣:</label></td>
+                <td>
+                    <input type="checkbox" name="hobbies" value="sports"> 運動
+                    <input type="checkbox" name="hobbies" value="music"> 音樂
+                    <input type="checkbox" name="hobbies" value="reading"> 閱讀
+                </td>
+            </tr>
+            <tr>
+                <td><label for="file">上傳檔案:</label></td>
+                <td><input type="file" id="file" name="file"></td>
+            </tr>
+            <tr>
+                <td><label for="color">喜歡的顏色:</label></td>
+                <td><input type="color" id="color" name="color"></td>
+            </tr>
+            <tr>
+                <td><label for="rating">評分 (1-10):</label></td>
+                <td><input type="range" id="rating" name="rating" min="1" max="10"></td>
+            </tr>
+            <tr>
+                <td><label for="website">個人網站:</label></td>
+                <td><input type="url" id="website" name="website"></td>
+            </tr>
+            <tr>
+                <td><label for="search">搜尋:</label></td>
+                <td><input type="search" id="search" name="search"></td>
+            </tr>
+            <tr>
+                <td><label for="message">留言:</label></td>
+                <td><textarea id="message" name="message" rows="3"></textarea></td>
+            </tr>
+        </table>
+        <div class="form-actions">
+            <input type="submit" value="提交">
+            <input type="reset" value="重設">
+        </div>
+    </form>
+</body>
+
+</html>
