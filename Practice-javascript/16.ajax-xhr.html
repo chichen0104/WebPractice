@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript：AJAX 網路連線實務</title>
+</head>
+
+<body>
+
+    <button onclick="getJsonData('https://cwpeng.github.io/live-records-samples/data/products.json')">取得資料</button>
+    <div id="result"></div>
+
+    <script>
+
+        // https://cwpeng.github.io/live-records-samples/data/products.json
+
+        // 網址的組成 通訊協定(Protocal):主機名稱(HostName)/路徑(Path)
+        // 初期稱作(AJAX) Asynchronous JavaScript And XML 技術
+        // 中期使用(XHR)XMLHttpRequest物件，稱為XHR技術
+        // 近年，建議採用最新的fetch函式來執行網路連線功能
+
+        // Ajax 是 JavaScript 用於取得遠端資料的 技術名稱
+        // Promise 是一個語法，專門用來處理非同步行為
+        // Promise 是用來優化非同步的語法，而 Async、Await 可以基於 Promise 讓非同步的語法的結構類似於 “同步語言”，更易讀且好管理。
+
+        // 取得純文字回應
+        function getTextData(url) {
+            fetch(url).then(function (response) {
+                console.log("response物件是", response);
+                return response.text();
+            }).then(function (data) {
+                console.log("response資料是", data);
+            })
+        };
+        // 取得Json格式回應
+        function getJsonData(url) {
+
+            //先帶入網址
+            fetch(url).then(function (response) {
+
+                // 取得回應的物件
+                console.log("response物件是", response);
+
+                // 轉換成Json格式
+                return response.json();
+
+            }).then(function (data) {
+
+                // 取得Json格式資料
+                console.log("response資料是", data);
+
+                //取的畫面元素
+                var result = document.querySelector("#result");
+                result.innerHTML = "";
+
+                //存放資料到畫面
+                for (let i = 0; i < data.length; i++) {
+                    let product = data[i];
+                    result.innerHTML = result.innerHTML
+                        + "<div>" + product.number
+                        + "," + product.name
+                        + "," + product.price
+                        + "," + product.description
+                        + "</div>";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

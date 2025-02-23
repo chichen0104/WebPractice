@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript：箭頭函式</title>
+</head>
+
+<body>
+    <script>
+
+        //普通函式的寫法一
+        function add1(n1, n2) {
+            let result = n1 + n2;
+            return result;
+        }
+
+        //普通函式的寫法二
+        let add2 = function (n1, n2) {
+            let result = n1 + n2;
+            return result;
+        }
+
+        //箭頭函式 (不寫function，改用箭頭)
+        let add3 = (n1, n2) => {
+            let result = n1 + n2;
+            return result;
+        }
+
+        //箭頭函式 (只有回傳值敘述，使用中括號)
+        let add4 = (n1, n2) => (n1 + n2);
+
+
+        //呼叫
+        console.log(add1(1, 2));
+        console.log(add2(1, 2));
+        console.log(add3(1, 2));
+        console.log(add4(1, 2));
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript：解構賦值</title>
+</head>
+
+<body>
+    <script>
+
+        //========陣列==========
+
+        //宣告陣列
+        let arr = [3, 4, 5];
+
+        //傳統作法
+        let d1 = arr[0];
+        let d2 = arr[1];
+        let d3 = arr[2];
+        console.log(d1, d2, d3);//3,4,5
+
+        //解構賦值的語法一(宣告與賦值一起)
+        let [d12, d22, d32] = arr;
+        console.log(d12, d22, d32);//3,4,5
+
+        //解構賦值的語法二(宣告與賦值分開)
+        let d11, d21, d31;
+        [d11, d21, d31] = arr;
+        console.log(d11, d21, d31);//3,4,5
+
+        //解構賦值的語法三(預設值)
+        [d13 = 1, d23 = 2, d33 = 3, d43 = 4];
+        console.log(d13, d23, d33, d43);//1,2,3,4
+
+        [d14 = 1, d24 = 2, d34 = 3, d44 = 4] = arr;
+        console.log(d14, d24, d34, d44);//3,4,5,4
+
+        //變數資料交換
+        let n1 = 3;
+        let n2 = 4;
+        [n2, n1] = [n1, n2];
+        console.log(n1, n2);
+
+
+        //========物件==========
+
+        //宣告物件
+        let obj = {
+            x: 3,
+            y: 4
+        }
+        //傳統作法 
+        let x = obj.x;
+        let y = obj.y;
+        console.log(x, y);
+
+        //解構賦值的語法一(宣告與賦值一起)
+        let { x: x1, y: y1 } = obj;
+        console.log(x1, y1);//3,4
+
+        //解構賦值的語法二(宣告與賦值分開)
+        let x2, y2;
+        ({ x: x2, y: y2 } = obj);
+        console.log(x2, y2);//3,4
+
+        //解構賦值的語法三(預設值)
+        let x3, y3, z3;
+        ({ x: x3, y: y3, z: z3 = 55 } = obj);
+        console.log(x3, y3, z3);//3,4,55
+
+        //統整函式的物件參數
+        function add({ n1, n2 }) {
+            console.log(n1 + n2);
+        }
+
+        add({ n1: 100, n2: 555 });
+
+    </script>
+
+</body>
+
+</html>
