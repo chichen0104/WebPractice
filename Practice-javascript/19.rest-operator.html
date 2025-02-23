@@ -4,10 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript：其餘運算符號</title>
 </head>
 
 <body>
+
+    <script>
+        //其餘運算符號運用在 陣列 的解構賦值
+        let [n1, n2, ...data] = [3, 2, 1, 5, 4, 0];
+        console.log(n1, n2, data); //3 2 1 [5, 4, 0]
+
+        //其餘運算符號運用在 物件 的解構賦值
+        let { x, z, ...obj } = { x: 3, y: 4, z: 5, a: 1, b: 2 };
+        console.log(x, z, obj);//3 5 {y:4, a:1, b:2}
+
+        //運用在函式參數
+        function add(n1, n2, ...arg) {
+            console.log(n1, n2, arg);
+            let total = n1 + n2;
+            for (let i = 0; i < arg.length; i++) {
+                total += arg[i];
+            }
+            console.log(total);
+        }
+
+        add(3, 4);//3 4 [] //7
+        add(5, 6, 1, 2);//5 6 [1,2] //14
+        add(1, 2, 3, 1, 1);//1 2 [3,1,1] //8
+    </script>
 
 </body>
 
