@@ -8,7 +8,52 @@
 </head>
 
 <body>
+    <script>
 
+        let profile = {
+            firstNaem: "小明",
+            lastName: "王"
+        }
+
+        //測試一下proxy運作方式
+        let proxy = new Proxy(profile, {
+            get: function (target, property) {
+                console.log("代理的目標物件", target);
+                console.log("想要取得的屬性名稱", property);
+                return "屬性對應資料";
+            }
+        })
+        console.log(proxy.abc);
+
+
+        //用Proxy取得全名
+        let profileProxy = new Proxy(profile, {
+            get: function (target, property) {
+                if (property === "fullName") {//如果想要取得的屬性名稱是 fullName 
+                    return target.lastName + target.firstNaem;
+                }
+                else {//如果是其他屬性，就按照原來的目標物件做回應
+                    return target[property];
+                }
+            }
+        })
+        //一般做法
+        console.log(profile.firstNaem + profile.lastName);//小明王
+        //用Proxy
+        console.log(profileProxy.fullName);//王小明
+        console.log(profileProxy.firstNaem);//小明
+        console.log(profileProxy.abc);//undefined
+
+
+
+
+
+
+
+
+
+
+    </script>
 </body>
 
 </html>
