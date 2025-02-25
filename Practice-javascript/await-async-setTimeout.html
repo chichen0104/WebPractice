@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //時間排程是一個[非同步的程式]
+        //主程式設定排程後，交由[背景子程式]負責監控時間
+        window.setTimeout(function () {//此為回呼函式
+            //兩秒後，[背景子程式]喚醒[主程式]執行此函式
+            alert("兩秒後執行");
+        }, 2000);
+        //主程式設定排程後，立刻往下執行
+        alert("立刻被呼叫");
+        //主程式結束，暫時沒事做
+
+    </script>
+</body>
+
+</html>

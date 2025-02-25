@@ -10,6 +10,31 @@
 <body>
     <script>
 
+        let a = {
+            x: 3,
+            y: 2,
+            data: [1, 2, 3]
+        };
+
+        //淺拷貝:只拷貝物件第一層資料，常見的拷貝工具都是在做淺拷貝
+
+        //使用其餘運算子做淺拷貝
+        let b = { ...a };//陣列實際上只拷貝位址
+        b.data[0] = 100;//a的data被改變了
+
+        //使用assign做淺拷貝
+        let c = Object.assign({}, a);//陣列實際上只拷貝位址，a是物件所有第一個參數用{}
+        c.data[1] = 200;//a的data被改變了
+
+        console.log(a.data[0], a.data[1], a.data[2]);//100,200,3
+
+
+        //深拷貝:完全拷貝物件底下所有層次的資料
+        //無法拷貝函式、Symbal等
+        let aStr = JSON.stringify(a);//將物件字串化
+        let aCopied = JSON.parse(aStr);//根據字串化的資料重新建立物件結構，完成深拷貝
+
+
     </script>
 </body>
 
