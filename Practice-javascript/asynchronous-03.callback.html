@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getData(callback) {
+
+            // 2. 準備 Ajax 連線
+            let req = new XMLHttpRequest();
+            req.open("get", 'https://cwpeng.github.io/live-records-samples/data/products.json');
+            req.onload = function () {
+
+                // 5. 等待一段時間後，子程式完成連線，觸發主程式的load是件，取得資料
+                // 6. 呼叫callback，即透過參數傳入的 showData 函式
+                //利用回呼函式，取得非同步的數據!!
+                callback(this.responseText);
+            }
+            // 3. 送出連線，建立子程式進行非同步處理
+            req.send();
+            // 4. 主程式立刻結束函是，回傳undefined
+        }
+
+        function showData(result) {
+            alert(result);// 7. 可以從result ，取得連線後得到的資料
+        }
+
+        getData(showData);// 1. 呼叫取資料用的函式，並將 showData函式透過參數傳入
+    </script>
+</body>
+
+</html>

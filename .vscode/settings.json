@@ -2,5 +2,6 @@
     "editor.mouseWheelZoom": true,
     "terminal.integrated.mouseWheelZoom": true,
     "editor.mouseWheelScrollSensitivity": 1,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "editor.fontFamily": "Consolas, Noto Sans Mono CJK TC Regular"
 }

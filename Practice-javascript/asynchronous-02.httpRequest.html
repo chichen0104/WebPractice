@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Ajax 預設是一個[非同步的程式]
+        let req = new XMLHttpRequest();
+
+        req.open("get", 'https://cwpeng.github.io/live-records-samples/data/products.json');
+        req.onload = function () {
+
+            // 連線完成後，[背景子程式]觸發[主程式]的load事件處理函式
+            alert(this.responseText);// 取得伺服器回應
+        };
+        // [主程式]送出連線後交由[背景子程式]負責處理連線細節
+        req.send();
+
+        alert("立刻被呼叫");
+        // [主程式]結束，暫時沒事做
+    </script>
+
+</body>
+
+</html>

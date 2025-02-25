@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // new Promise(執行函式(成功程序, 失敗程序));
+        // then (函式(){成功時的動作},函式(){失敗時的動作})
+        // catch(函式(){失敗時的動作})
+
+        function getData() {
+            return new Promise(function (resolve, reject) {
+                let req = new XMLHttpRequest();
+                req.open("get", 'https://cwpeng.github.io/live-records-samples/data/products.json');//
+                req.onload = function () {
+                    resolve(this.responseText);//連線成功
+                };
+                req.onerror = function () {
+                    reject("error");//連線失敗
+                };
+                req.send();
+            });
+        }
+
+        let dataPromise = getData(); //嘗試從網路取得資料，回傳Promise物件
+        dataPromise
+            .then(
+                function (result) {//這裡可以從參數result，正確取得連線後的資料
+                    alert(result);
+                },
+                function (error) {//這裡可以從參數error，取得失敗報告
+                    alert(error);
+                })
+            .catch(function (err) {//或是用catch
+                alert(err);
+            });
+
+
+    </script>
+</body>
+
+</html>
