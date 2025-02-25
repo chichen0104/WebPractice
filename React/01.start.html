@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+
+    <script>
+        // React 和 ReactDOM 這兩個物件，是 React 套件的核心物件
+        console.log("React:", React);
+        console.log("ReactDOM:", ReactDOM);
+
+
+        //Element : React應用中最小的組成單位
+        //製作元件 : React.createElement();
+        //把元件畫到畫面 : ReactDOM.render();
+
+        //<H!>Hello World</H1>
+        let reactElement = React.createElement("H1", null, "Hello World");
+        ReactDOM.render(reactElement, document.body);
+
+    </script>
+
+</body>
+
+</html>
