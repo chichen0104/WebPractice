@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <script>
+        class MyHead extends React.Component {
+
+            render() {
+                return React.createElement("H1", null, "Hello Component");
+            }
+        }
+        window.addEventListener("load", () => {
+
+            //1. 建立自定的 React 組件實體
+            let myComponent = React.createElement(MyHead, null);
+
+            //2. 將建立好的 React 組件實體畫到容器
+            ReactDOM.render(myComponent, document.body);
+        })
+    </script>
+
+</body>
+
+</html>
