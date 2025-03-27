@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" /><meta name="viewport" content="width-device-width, initial-scale=1,maximum-scale=1">
+    <title>CSS Flex 切版技巧</title>
+    <style type="text/css">
+
+
+        /*將內部元素Flexbox 模型化:
+        要設定容器為display-flex,然後設定內容元素flex,
+        flex不做設定的話還是要寫上none,none代表固定尺寸,然後設定一個寬度*/
+
+
+        /* 
+        Flex 外容器屬性：
+        display
+        flex-flow
+        flex-direction  (排列方式)預設為row
+        flex-wrap       (容器若有換行狀況要設定這個為wrap)
+        justify-content (內容元素水平對齊方式)要靠左靠中靠右,預設為stretch,其他還有flex-start flex-end
+        align-items     (內容元素垂直對齊方式)要靠上靠中靠下,預設為flex-start,其他還有flex-start flex-end
+           
+        Flex 內元件屬性：
+        flex     (項目尺寸的處理方式)
+                    flex: auto;彈性縮放,把容器張滿 
+                    flex: none;不彈性縮放,完全按照我們指定的寬度處理,,然後設定一個寬度
+        flex-grow
+        flex-shrink
+        flex-basis
+        order
+        align-self
+        */
+
+        /*
+        RWD 回應式設計的關鍵動作 欄位變化
+        Flex如何控制欄位變化
+        4欄 > 2欄 > 1欄
+
+        規劃
+            1200px以上 : 4欄,固定尺寸;(flex: none;width:270px;margin:10px;)
+            500px1200px : 2欄,彈性尺寸;@media(max-width:1200px)
+            500px以下(手機) : 1欄,彈性尺寸;
+        */
+
+        body {
+            margin: 0px;
+            background-color: burlywood;
+        }
+        header {
+            background-color: chocolate;
+            color: tan;
+            font-weight: bold; /*粗體*/
+            font-size: 30px;
+            /*Header內元素的置中方式*/
+            /*不要設定高度,利用padding來達成上下置中利用text-align來達成水平置中*/
+            text-align: center;
+            padding: 20px;
+
+        }
+        .Content { /*容器*/
+            border: aqua 1px solid;
+             
+            margin-right: auto;
+            margin-left: auto;
+            
+            display: flex;
+            flex-direction: row ;
+            align-items:stretch;/*垂直*/
+            justify-content: center; /*水平*/
+
+            flex-wrap: wrap;/*RWD需要設定,這樣才會換行*/
+        }
+        .Box { /*內容元素*/
+            border: red 1px solid;
+           
+            /*(電腦尺寸)290x4個Box的寬度=1160 小於1200*/
+            flex: none;width:270px;margin:10px; 
+        }
+        ul{/*容器*/
+            background-color: darkgoldenrod;
+            display: flex;
+            list-style: none;
+            padding: 0px;
+        }
+        ul > .logo{/*內容元素*/
+            background-color:tomato;
+            flex: none;
+            width:auto;
+        }
+        ul > .menu{/*內容元素*/
+            background-color:seagreen;
+            flex: auto;
+        }
+        ul > .user{/*內容元素*/
+            background-color:cornflowerblue;
+            flex: none;
+            width:auto;
+        }
+
+        /*(平板尺寸)*/
+        @media(max-width:1200px)/*螢幕小於1200px的時候*/
+        {
+            .Box{
+                width: 45%;/*用百分比設定,這樣就會隨著銀幕縮放跟著縮放*/
+            }
+        }
+        /*(手機尺寸)*/
+        @media(max-width:500px)
+        {
+            .Box{
+                width: 90%; 
+            }
+        }
+
+
+
+    </style>
+</head>
+
+
+<body>
+    <header>CSS Flex 切版技巧</header>
+  
+    <nav>
+        <ul >
+            <li class="logo">logo</li>
+            <li class="menu">menu</li>
+            <li class="user">user</li>
+        </ul>
+    </nav>
+
+    <div class="Content">
+        <section class="Box">section的1<br/>Is a good day</section><!--
+        --><section class="Box">section的2 </section><!--
+        --><section class="Box">section的inline-block3</section> 
+    </div>
+
+
+    <div>
+        <p>
+
+            CSS Flex 可以說是近年最成熟且被廣泛運用的技巧。圍繞著 display 和 flex 的設定，改善 Inline-Block 在上下、
+            左右對齊設定上的缺陷，提供專屬、整套的解決方案如下： <br />
+            <br />
+            核心 display: flex <br />
+            核心 flex: none|auto <br />
+            左右對齊 justify-content: flex-start|center|flex-end <br />
+            上下對齊 align-items: flex-start|center|flex-end <br />
+
+
+        </p>
+    </div>
+
+
+</body>
+
+
+
+</html>

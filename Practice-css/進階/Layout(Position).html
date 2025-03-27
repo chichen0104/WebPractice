@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    　
+    　
+
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+
+        .Container,
+        nav,
+        header,
+        main,
+        section,
+        footer {
+            border: solid 5px;
+        }
+
+        .Container {
+            border-color: red;
+        }
+
+        nav {
+            border-color: #ffff00
+        }
+
+        header {
+            border-color: #00ff00
+        }
+
+        main {
+            border-color: #000000
+        }
+
+        section {
+            border-color: #6a5acd;
+        }
+
+        footer {
+            border-color: #006400;
+        }
+
+
+        .Container {
+            position: relative;
+            /*為了要被nav跟section定位,所以設了relation*/
+        }
+
+        nav { 
+            width: 200px;
+            position: absolute;/*Container的相對位置*/
+            left: 0px;/*固定在最左邊*/
+        }
+
+        main {
+            margin-left: 200px;/*調一下margin就好*/
+            border: solid 5px
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="Container">
+        <header>
+            header
+        </header>
+        <nav>
+            <ul>
+                <li>nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+                <li>nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+                <li>nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+                <li>nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+                <li>nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+                <li>nav1</li>
+                <li>nav2</li>
+                <li>nav3</li>
+                <li>nav4</li>
+            </ul>
+        </nav>
+        <main>
+            main
+            <section>
+                <h2>section1</h2>
+                <p></p>
+            </section>
+            <section>
+                <h2>section2</h2>
+                <p>22222222222</p>
+            </section>
+            <section>
+                <h2>section3</h2>
+                <p>33333333333</p>
+            </section>
+        </main>
+
+        <footer>
+            footer
+        </footer>
+    </div>
+
+</body>
+
+</html>

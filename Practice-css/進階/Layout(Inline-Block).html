@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <!--告訴手機,請勿做縮放-->
+    <meta name="viewport" content="width-device-width, initial-scale=1,maximum-scale=1">
+
+    <title>inline-block方式的排版</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            background-color: burlywood;
+        }
+
+        header {
+            background-color: chocolate;
+            color: tan;
+            font-weight: bold; /*粗體*/
+            font-size: 30px;
+            /*Header內元素的置中方式*/
+            /*不要設定高度,利用padding來達成上下置中利用text-align來達成水平置中*/
+            text-align: center;
+            padding: 20px;
+
+        }
+        /*關於寬度*/
+        /*設定 1000px 一般是顧慮 1024px 這個尺寸 margin-left:auto;
+        寬度可以用百分比設定，例如 width:100%，適當的配置之下，就會隨著螢幕大小變化。
+        但是我們在排版的時候，不一定會這樣做。如果要應付小於 1000px 的螢幕，使用 media query 的技巧來解決是比較常見的作法
+        */
+        .Content {
+            border: aqua 1px solid;
+            /*Content的水平置中方式*/ /*設定寬度跟margin左右為auto,來達成水平置中*/
+            width: 1000px;
+            margin-right: auto;
+            margin-left: auto;
+            /*Content內元素的水平置中方式*/ /*子層級以下的元素內部都將被置中*/
+            text-align: center;
+            padding: 0; /*雖然ul  list style改為none了,但是第一的dot所殘留的padding-left:40px並未消失,要手動刪除*/
+        }
+
+        .Box{
+            border: white 1px solid;
+            width: 280px;
+            padding: 15px;/*讓內部不要太壅擠*/
+            /*取消區塊元素的斷行,並保證對齊上方*/
+            display: inline-block; /*當li設定成inline後,dot符號會自動消失*/
+            vertical-align: top;
+        }
+
+        /*當銀幕尺寸最大寬度是600的時候..套用括弧內設定*/
+        @media screen and (max-width:600px) {
+            .Content {
+                width: 100%;
+                /*手機大概是320px~400px之間,調100%之後頂多落在320~400
+                    而我的inline-block元素設280px,若兩個以上水平並排,必定擠壓往下掉,變成垂直並排'
+                */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>CSS Inline-Block 切版技巧</header>
+    <!--用註解消除間距-->
+    <div class="Content">
+             <section class="Box">section的inline-block1</section><!--	
+        --><section class="Box">section的inline-block2</section><!--
+        --><section class="Box">section的inline-block3</section>
+    </div>
+
+    <ul class="Content">
+             <li class="Box">ul的inline-block1</li><!--
+        --><li class="Box">ul的inline-block2</li><!--
+        --><li class="Box">ul的inline-block3</li>
+    </ul>
+    <div  style="width: 1000px;margin: auto">
+        <p>
+            此技巧以 CSS 的 display 設定為核心，綜合 block 與 inline 模式的優點，再搭配 text-align 以及 vertical-align 處理上下、
+            以及左右對齊的需求。以下是使用 CSS Inline-Block 的相關設定：
+            <br />
+            1.核心 display: inline-block<br />
+            2.左右對齊 text-align: left|center|right<br />
+            3.上下對齊 vertical-align: top|middle|bottom<br />
+        </p>
+    </div>
+</body>
+</html>

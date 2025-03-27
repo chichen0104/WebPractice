@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&display=swap');
+        :root {
+          --BackgroundColor: #03080a ;
+          --BackColor:   #45f3ff;
+          --ForeColor: #000;
+        }
+
+         
+         
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /*置中Container*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*最低高度限制,瀏覽器再怎麼縮放body的高度都有100v*/
+            min-height: 100vh;  
+            background-color: var(--BackgroundColor);
+        }
+
+        .Container {
+            width: 80%;
+            padding: 20px;
+          
+        }
+
+        .Container h2 {
+            width: 100%;
+            color:  var(--BackColor);
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .Container .Row {
+
+            position: relative;
+            width: 100%;
+            /*!!!!!*/
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+        }
+
+        .Container .Row .Col {
+
+            position: relative;
+            width: 100%;
+            padding: 0 10px;
+            margin: 30px 0px 10px;
+            /*上/左右/下*/
+            transition: 0.5s;
+            /*轉場*/
+
+            /* background-color: chocolate; */
+        }
+
+        .Container .Row .Inputbox-Textbox,
+        .Container .Row .Inputbox-Textarea {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            color: var(--BackColor);
+            /* background-color: red; */
+        }
+
+         .Container .Row .Inputbox-Textbox .Textbox ,
+         .Container .Row .Inputbox-Textarea .Textarea {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            outline: none;
+            /*focus時不要顯示邊框*/
+            font-size: 18px;
+            padding: 0 10px;
+            /*輸入的文字離textbox左右有點距離*/
+            z-index: 1;
+            color:var(--ForeColor);
+            /*TextBox中閃爍的游標,文字,*/
+        } 
+
+          .Container .Row .Inputbox-Textbox .Text,
+          .Container .Row .Inputbox-Textarea .Text
+           {
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: 40px;
+            font-size: 18px;
+            padding: 0 10px;
+            display: block;
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+
+        .Container .Row .Inputbox-Textbox .Textbox:focus + .Text,
+        .Container .Row .Inputbox-Textbox .Textbox:valid + .Text {
+
+            top: -35px;
+            left: -10px;
+        }  
+
+         .Container .Row .Inputbox-Textbox .Line,
+         .Container .Row .Inputbox-Textarea .Line  {
+
+            position: absolute;
+            bottom: 0;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background:var(--BackColor);
+            transition: 0.5s;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .Container .Row .Inputbox-Textbox .Textbox:focus~.Line,
+        .Container .Row .Inputbox-Textbox .Textbox:valid~.Line {
+
+            height: 100%;
+        } 
+        
+        .Container .Row .Inputbox-Textarea  {
+
+           position: relative;
+           width: 100%;
+           height: 100px;
+           padding: 10px 0;
+        }   
+        .Container .Row .Inputbox-Textarea .Textarea{
+            height: 100%;
+            resize: none;;
+        }
+
+        .Container .Row .Inputbox-Textarea .Textarea:focus + .Text,
+        .Container .Row .Inputbox-Textarea .Textarea:valid + .Text {
+
+            top: -35px;
+            left: -10px;
+        }  
+        .Container .Row .Inputbox-Textarea .Textarea:focus~.Line,
+        .Container .Row .Inputbox-Textarea .Textarea:valid~.Line {
+
+            height: 100%;
+        }
+
+        .Button{
+
+            border: none;
+            padding: 7px 35px;
+            cursor: pointer;
+            outline: none;
+            background-color: var(--BackColor);
+            color: var(--ForeColor);
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="Container">
+        <h2 class="Head2">Contant Us</h2>
+        <div class="Row">
+            <div class="Col">
+                <div class="Inputbox-Textbox">
+                    <input class="Textbox" type="text" name="" required="required"></input>
+                    <span class="Text">First Name</span>
+                    <span class="Line"></span>
+                </div>
+            </div>
+            <div class="Col">
+                <div class="Inputbox-Textbox">
+                    <input class="Textbox" type="text" name="" required="required"></input>
+                    <span class="Text">Last Name</span>
+                    <span class="Line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="Col">
+                <div class="Inputbox-Textbox">
+                    <input class="Textbox" type="text" name="" required="required"></input>
+                    <span class="Text">First Name</span>
+                    <span class="Line"></span>
+                </div>
+            </div>
+            <div class="Col">
+                <div class="Inputbox-Textbox">
+                    <input class="Textbox" type="text" name="" required="required"></input>
+                    <span class="Text">Last Name</span>
+                    <span class="Line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="Col">
+                <div class="Inputbox-Textarea">
+                    <textarea required="required" class="Textarea"></textarea>
+                    <span class="Text">Type your Message Here...</span>
+                    <span class="Line"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="Row">
+            <div class="Col">
+                <input type="submit" value="送信する" class="Button"  style = "   display: block;  margin:auto;"></input>
+            </div>
+            <div class="Col">
+                <input type="submit" value="キャンセル" class="Button" style = "   display: block;  margin:auto;"></input>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

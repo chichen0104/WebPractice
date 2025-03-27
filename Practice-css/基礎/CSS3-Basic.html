@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/> 
+	<title>CSS 3</title>
+	<style type="text/css">
+
+
+		/*
+		display
+			block
+			inline
+			none
+			flex
+	 
+		position 
+			static
+			relative
+			absolute
+			fixed
+			top/right/bottom/left
+			
+		float&clear
+			float
+				left
+				right
+			claer
+				left
+				right
+				both
+		box-model
+			margin
+			border
+			padding
+			width/height
+		
+		background
+			background-color
+			background-image
+		text
+			text-align
+			line-height
+		font
+			font-size
+			font-weight
+			color
+			font-family
+		*/
+		 
+ 
+		.Box{
+			width: 150px;
+			height: 150px;
+			background-color:  #DB4D6D;
+			text-align: center;
+			line-height: 150px;
+
+
+
+			/* 透明 */
+			/*數值為0到1之間 0代表全透明 1代表不透明 */
+			opacity: 1;
+			
+			/* 圓角 */
+			/* 單位可用像素跟百分比跟em */
+			/* 設為(寬度的一半)或(50%)或(999em)可變圓型 */
+			border-radius: 10px;
+
+			/* 陰影 */
+			/* X方向位移 Y方向位移 陰影擴散 顏色*/
+			box-shadow: 10px 7px 3px #000000;
+
+			/* 文字陰影 */
+			text-shadow: 1px 1px 1px #ffffff;
+
+			/* 線性轉換 */
+
+			/* 位移 */
+			/* transform: translate(100px,0px); */
+			/* 縮放 */
+			/* transform: scale(1.5,1); */
+			/* 旋轉 */
+			/* transform: rotate(45deg); */
+			/* 歪斜 */
+			/* transform:skew(0deg,10deg); */
+
+			transform:
+			translate(30px,0px)
+			rotate(10deg) 
+			scale(1.1,1)
+			;
+		}
+		 
+		.Circle{
+			width: 150px;
+			height: 150px;
+			background-color: blue;
+			opacity: 0.5;
+			border-radius: 50%;
+		}
+		 
+		.Cube > .Top{
+			width: 120px;
+			height: 30px;
+			background-color:#dddddd;
+
+			transform: 
+			skew(-45deg,0deg)
+			translate(15px,0px);
+		}
+		.Cube > .Center{
+			display: inline-block;
+			width: 120px;
+			height: 120px;
+			background-color:#aaaaaa;
+		}
+		.Cube > .Right{
+			display: inline-block;
+			width: 30px;
+			height: 120px;
+			background-color:#888888;
+
+			transform: 
+			skew(0deg,-45deg)
+			translate( 0px,-15px);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="Box">
+		<h2>Player</h2> 
+	</div>
+
+	<br/>
+
+	<div class="Circle"></div>
+
+	<br/>
+
+	<div class="Cube">
+		<div class="Top"></div>
+		<div class="Center"></div><div class="Right"></div>
+	</div>
+	
+</body>
+	
+
+</html>

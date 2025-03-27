@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Normalize.css">
+    <title>Document</title>
+    <style>
+        
+        /* 
+        /*垂直置中設定方法*/
+        /*
+        1.用行高同Container高度的方法(字多到要換行的話,此招無效)
+        2.用Container的display轉table,Box的display轉table-cell,並追加vertical-align: middle(IE6不支援)
+        3.兩個子元素皆轉inline-block,,並追加vertical-align: middle(互相垂直置中,而非對齊父元素)
+        4.同3,但使用虛擬元素
+        5.不要設定高度,利用padding來達成上下置中
+
+        vertical-align
+        在table裡面是利用父子關係
+        在inline-block裡是互相互相有效
+        */
+
+
+        /* 
+        /*水平置中設定方法 */
+        /* 
+        1.block:設寬度,設margin左右auto
+        2.inline:設text-align:center
+        */
+
+ 
+        .Container1 {
+            width: 400px;
+            height: 400px;
+            background: burlywood;
+            text-align: center;
+            line-height: 400px;
+        }
+
+        .Container2 {
+            width: 400px;
+            height: 400px;
+            background: burlywood;
+            text-align: center;
+            display: table;
+
+        }
+
+        .Box2 { 
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .Container3 {
+            width: 400px;
+            height: 400px;
+            background: burlywood;
+           
+        }
+
+      
+        .Box3-1{
+            width: 20px;
+            height: 400px;/* 將高度設成同父元素,或100% */
+            background: purple;
+            display: inline-block;
+            vertical-align: middle;
+            visibility: hidden;
+        }
+       
+        .Box3-2 {
+            width: 300px;
+           
+            background: seagreen;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 30px;
+            text-align: center;
+        }
+
+
+
+        .Container4 {
+            width: 400px;
+            height: 400px;
+            background: burlywood;
+             
+        }
+        .Container4::Before{/*after也可 */
+            content: "";  
+            display: inline-block;
+            background: purple;
+            height: 100%;/* 將高度設成同父元素 */
+            vertical-align: middle;
+            
+        }
+        .Box4 {
+            width: 300px;
+           
+            background: seagreen;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 50px;
+            text-align: center;
+        }
+        .Container5 {
+            width: 400px;
+            
+            background: burlywood;
+            padding: 50px; 
+            
+        }
+        .Box5 {
+            width: 300px;
+           
+            background: seagreen;
+            display: inline-block;
+            vertical-align: middle;
+           
+            text-align: center;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <h4>方法1</h4>
+    <div class="Container1">
+        <div class="Box1">Title</div>
+    </div>
+
+    <hr>
+    <h4>方法2</h4>
+    <div class="Container2">
+        <div class="Box2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non nisi laudantium quis quibusdam ullam atque unde sae</div>
+    </div>
+
+    <hr>
+    <h4>方法3</h4>
+    <div class="Container3">
+        <div class="Box3-1"></div><!--
+        --><div class="Box3-2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non nisi laudantium quis quibusdam ullam atque unde sae</div>
+    </div>
+
+    <hr>
+    <h4>方法4</h4>
+    <div class="Container4"><!--
+         --><div class="Box4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non nisi laudantium quis quibusdam ullam atque unde sae</div>
+    </div>
+
+    <hr>
+    <h4>方法5</h4>
+    <div class="Container5">
+        <div class="Box5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non nisi laudantium quis quibusdam ullam atque unde sae</div> 
+    </div>
+    
+</body>
+
+</html>

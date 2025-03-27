@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+        當全部子類都float後,Container會抓不到高度
+        解法:
+        1.給Container一個高度(不適合用在動態)
+        2.給Container一個overflow:auto(複雜的情況下有可能出現卷軸) 
+        3.給Container一個.Clearfix::after(最完美解法)
+        4.在Container的裡面最後給個.Clearfix(多一個div)
+    */
+    .Container {
+        background: #000;
+
+        /* height: 150px;*/
+        /* (不適合用在動態) */
+        /* overflow: auto; */
+    }
+
+    .Clearfix1::after {
+        /* after後面所產生的元素都是inline,所以要轉成block */
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .Clearfix2 {
+        clear: both;/* 原理是他會跑到浮動物件的後方,撐開Container */
+    }
+    .Container div {
+        width: 150px;
+    }
+    .Item1 {
+        background: red;
+        float: left;
+        height: 150px;
+    }
+    .Item2 {
+        background: green;
+        float: left;
+        height: 300px;
+    }
+
+    .Item3 {
+
+        background: blue;
+        float: left;
+        /* height: 200px; */
+    }
+</style>
+
+<body>
+
+    <div class="Container Clearfix1">
+        <div class="Item1"></div>
+        <div class="Item2"></div>
+        <div class="Item3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nihil vel autem, velit repellendus iusto quae fugit sunt, commodi quos eligendi voluptatum quia incidunt omnis dolor in! Recusandae consequatur autem eligendi cumque quas? Temporibus earum aperiam veritatis quas neque, omnis excepturi debitis ea ipsa illo, quam consequatur eveniet repellendus voluptatum?</div>
+    </div>
+
+    <hr>
+
+    <div class="Container ">
+        <div class="Item1"></div>
+        <div class="Item2"></div>
+        <div class="Item3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nihil vel autem, velit repellendus iusto quae fugit sunt, commodi quos eligendi voluptatum quia incidunt omnis dolor in! Recusandae consequatur autem eligendi cumque quas? Temporibus earum aperiam veritatis quas neque, omnis excepturi debitis ea ipsa illo, quam consequatur eveniet repellendus voluptatum?</div>
+         
+    </div>
+</body>
+
+</html>

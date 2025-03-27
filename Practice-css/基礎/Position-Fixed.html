@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1,maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Normalize.css">
+   <script scr = ""></script>
+    <style type="text/css">
+        .Container {
+            background: grey;
+            width: 500px;
+            margin: auto;
+        }
+        .Box{
+            background: var(--TONOCHA);
+            width: 200px;
+            height: 200px;
+        }
+        .BoxFix1 {
+            background: var(--NAMAKABE);
+            width: 200px;
+            height: 200px;
+            position: fixed;
+        }
+        .BoxFix2 {
+            background:var(--TONOCHA2);
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+           
+        }
+        .置中蓋版廣告 {
+            background: red;
+            width: 300px;
+            height: 300px;
+
+            position: fixed;
+            right: 0;
+            left: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+        }
+    
+
+       
+    </style>
+</head>
+
+<body>
+   
+    <section class="Container">
+        <div class="Box">
+            <h3>Box</h3>
+        </div>
+    </section>
+
+    <section class="Container">
+        <div class="BoxFix1">
+            <h3>不做位置設定的Fixed</h3>
+            <ul>
+                <li>1.原本佔據的位置會消失,原本包住他的container也包不住他</li>
+                <li>2.不做任何位置設定的話,會停留在原本應該在的位置</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="Container">
+        <div class="BoxFix2">
+            <h3>做位置設定的Fixed</h3>
+            <p>相對於瀏覽器的位置做定位</p>
+        </div>
+    </section>
+</body>
+
+</html>

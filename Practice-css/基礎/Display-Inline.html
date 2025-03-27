@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          div {
+            background: lawngreen;
+            width: 100px;
+            height: 100px;
+            border: black 10px solid; 
+            padding: 10px;
+            margin: 10px;
+        }
+        span {
+            background: khaki;
+
+            width: 100px; /* 無效 */
+            height: 100px;/* 無效 */
+            border: blue 10px solid;/*左右有效 寬高看的見但不占空間*/
+            padding: 10px; /*左右有效 寬高看的見但不占空間*/
+            margin: 10px;  /*左右有效  寬高無效*/
+
+            /* display: inline-block; */
+        }
+      
+      
+    </style>
+    <!-- /* 排版通常以區塊為優先 */ -->
+    
+    
+    <!-- inline的特性 -->
+    <!--   
+    1.和其他元素都在一行上，相臨的行内元素会排列在同一行，
+      直到一行排不下，才會換行，其寬度隨元素的内容而變化。 
+    2.width/height:無效，只能由内容撑起来。 
+    3.border      :左右有效 寬高看的見但不占空間。
+    4.padding     :左右有效 寬高看的見但不占空間。
+    5.margin      :左右有效 寬高無效。
+
+    6.inline會有baseline。
+    7.inline 跟 inline 間會有空白字元,可用註解或font-size=0消除
+    -->
+
+
+</head>
+
+<body>
+    <div>test</div>
+    <div>test</div>
+    <div>test</div>
+    <span>test</span>
+    <span>test</span>
+    <span>test</span>
+</body>
+
+</html>

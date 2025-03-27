@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Normalize.css">
+    <title>Document</title>
+    <style>
+        .Box1 {
+            background: #000;
+            display: flex;
+            margin: auto;
+            /*
+             flex會自動把所有子類寬高調成一樣,並且排成一排,相當方便 
+             */
+            justify-content: center;
+
+            width: 960px;
+            /* 父類寬度一旦有做設定,就不會被撐開 */
+        }
+
+        .Item1 {
+            background: rosybrown;
+            margin: 10px;
+            width: 500px;
+            /* 雖然設定了4個500px的div超出父類寬度,但瀏覽器會自動縮小子類的寬度,增加子類高度,500px是只有在不超出範圍時有用,但此規則在有圖片時無效 */
+
+
+        }
+
+
+        .Box2 {
+            width: 960px;
+            margin: auto;
+            display: flex;
+
+            margin-bottom: 5px;
+        }
+
+        .Item2 {
+
+
+            width: 100%;
+            /* 雖然調成100%,但是會平均分配,並擠滿整行 */
+
+            margin: 0 5px 0;
+            /*width:   100%再配合margin, 排出來的版面就很不錯*/
+        }
+
+        .Item2 img {
+
+            width: 100%;
+
+
+            vertical-align: bottom;
+            /* img是inlie-block,會有baseline的問題,會多出一格空白
+              兩種解決方法
+               vertical-align: bottom;
+               display: block;
+              
+              
+              */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="Box1">
+
+
+        <div class="Item1">
+
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum voluptatibus, odio cupiditate nihil porro quos
+            quae, voluptate fugit molestias accusamus fugiat similique asperiores. Ullam distinctio tempora voluptatem
+            reiciendis in? Nemo.
+        </div>
+        <div class="Item1">
+
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum voluptatibus, odio cupiditate nihil porro quos
+            quae, voluptate fugit molestias accusamus fugiat similique asperiores. Ullam distinctio tempora voluptatem
+            reiciendis in? Nemo.
+        </div>
+        <div class="Item1">
+
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum voluptatibus, odio cupiditate nihil porro quos
+            quae, voluptate fugit molestias accusamus fugiat similique asperiores. Ullam distinctio tempora voluptatem
+            reiciendis in? Nemo.
+        </div>
+        <div class="Item1">
+
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum voluptatibus, odio cupiditate nihil porro quos
+            quae, voluptate fugit molestias accusamus fugiat similique asperiores. Ullam distinctio tempora voluptatem
+            reiciendis in? Nemo.
+        </div>
+    </div>
+
+    <br>
+    <hr><br>
+    <div class="Box2">
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=1">
+
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=1">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+    </div>
+    <div class="Box2">
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=2">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=2">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=2">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+
+    </div>
+    <div class="Box2">
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=3">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=3">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=3">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+        <div class="Item2">
+            <img src="https://picsum.photos/300/200/?random=3">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur molestiae a, eligendi quas suscipit
+                consectetur adipisci animi id magni, alias quia dolores expedita explicabo recusandae et, neque
+                temporibus dolorem? Quis?</p>
+        </div>
+
+    </div>
+</body>
+
+</html>

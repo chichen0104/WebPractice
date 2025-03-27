@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/> 
+	<title>CSS 3</title>
+	<style type="text/css">
+
+	 
+	</style>
+	<script type="text/javascript">
+		//網頁載入時立刻執行此程式
+		window.onload = function(){
+			var canvas = document.getElementById("CVS");
+
+			var ctx = canvas.getContext("2d");
+			ctx.fillStyle="#DB4D6D";
+			ctx.strokeStyle="#5DAC81";
+
+			//Fill的畫法(填滿)
+			ctx.globalAlpha = 0.5;		
+			ctx.fillRect(10,10,100,100 );//x位移 y位移 寬 高
+
+			//Stroke的畫法(描邊)
+			ctx.globalAlpha = 1;
+			ctx.strokeRect(140,10,100,100);
+
+			//路徑的畫法
+			
+			//Fill
+			ctx.beginPath();
+			ctx.moveTo(10,200);//移動當前所在位置
+			ctx.lineTo(200,200);
+			ctx.closePath();
+			ctx.stroke();//會走stroke的設定,畫線用fill畫不出來
+			//Stroke
+			ctx.beginPath();
+			ctx.moveTo(10,250);//移動當前所在位置
+			ctx.lineTo(200,250);
+			ctx.lineTo(200,350);
+			ctx.closePath();
+			ctx.fill();//會走fill的設定
+
+
+		}
+
+	</script>
+</head>
+
+<body>
+	<!-- canvas繪圖只能用程式進行,所以設個ID -->
+	<canvas id="CVS" width= "500" height="400" style="border: 1px solid #000000;">
+
+	</canvas>
+</body>
+	
+
+</html>

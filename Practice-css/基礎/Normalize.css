@@ -1,0 +1,20 @@
+
+:root {
+    --TONOCHA:#9f353a;/*69.礪茶*/
+    --YAMABUKI:#FFB11B; /*95.山吹*/
+    --NAMAKABE:#7D6C46;/*104.生壁*/
+    --TONOCHA2:#4F726C; /*163.沈香茶*/
+    --KUROTSURUBAMI:#0B1013; /*194.黒橡*/
+    --SHIRONERI: #FCFAF2; /*233.白練*/
+   
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+ul{
+    list-style: none;
+}
+ 

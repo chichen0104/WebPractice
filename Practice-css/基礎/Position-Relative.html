@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Normalize.css">
+    <style>
+        .置中於父定位器當中 {
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            background: red;
+        }
+
+        ul {
+            background: var(--TONOCHA);
+            ;
+            font-size: 0;
+        }
+
+        li {
+            background: var(--NAMAKABE);
+            margin: 10px;
+            font-size: 26px;
+
+            text-align: center;
+            line-height: 100px;
+
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+
+        .Item19 {
+            background: var(--YAMABUKI);
+            /*相對於原本的位置做偏移,原本佔據的位置不會消失*/
+            position: relative;
+            top: 40px;
+            left: 40px;
+        }
+
+        /* 第一組 */
+        .Item3 {
+            /* 當設定定位時,有定位設定的物件會蓋住沒有定位設定的物件 */
+            background: var(--TONOCHA2);
+            position: relative;
+            left: 40px;
+        }
+
+        .Item4 {}
+
+        /* 第二組 */
+        .Item8 {
+            /* 當兩個都有設定定位時,原始碼後方會蓋住前方*/
+            background: var(--TONOCHA2);
+            position: relative;
+            left: 40px;
+        }
+
+        .Item9 {
+            position: relative;
+        }
+
+        /* 第三組 */
+        .Item13 {
+            background: var(--TONOCHA2);
+            position: relative;
+            left: 40px;
+            /* 預設的z-index是0,數字越大越前面*/
+            z-index: 1;
+        }
+
+        .Item14 {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- ul>li.Item${$}*50 -->
+    <ul>
+        <li class="Item1">1</li>
+        <li class="Item2">2</li>
+        <li class="Item3">3</li>
+        <li class="Item4">4</li>
+        <li class="Item5">5</li>
+        <li class="Item6">6</li>
+        <li class="Item7">7</li>
+        <li class="Item8">8</li>
+        <li class="Item9">9</li>
+        <li class="Item10">10</li>
+        <li class="Item11">11</li>
+        <li class="Item12">12</li>
+        <li class="Item13">13</li>
+        <li class="Item14">14</li>
+        <li class="Item15">15</li>
+        <li class="Item16">16</li>
+        <li class="Item17">17</li>
+        <li class="Item18">18</li>
+        <li class="Item19">19</li>
+        <li class="Item20">20</li>
+        <li class="Item21">21</li>
+        <li class="Item22">22</li>
+        <li class="Item23">23</li>
+        <li class="Item24">24</li>
+        <li class="Item25">25</li>
+        <li class="Item26">26</li>
+        <li class="Item27">27</li>
+        <li class="Item28">28</li>
+        <li class="Item29">29</li>
+        <li class="Item30">30</li>
+        <li class="Item31">31</li>
+        <li class="Item32">32</li>
+        <li class="Item33">33</li>
+        <li class="Item34">34</li>
+        <li class="Item35">35</li>
+        <li class="Item36">36</li>
+        <li class="Item37">37</li>
+        <li class="Item38">38</li>
+        <li class="Item39">39</li>
+        <li class="Item40">40</li>
+        <li class="Item41">41</li>
+        <li class="Item42">42</li>
+        <li class="Item43">43</li>
+        <li class="Item44">44</li>
+        <li class="Item45">45</li>
+        <li class="Item46">46</li>
+        <li class="Item47">47</li>
+        <li class="Item48">48</li>
+        <li class="Item49">49</li>
+        <li class="Item50">50</li>
+    </ul>
+</body>
+
+</html>
