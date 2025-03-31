@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Hello, world!</title>
+
+
+    <style>
+        /** Force footer to bottom of page **/
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-wrapper {
+            margin-top: auto;
+        }
+
+        .page-wrapper {
+            margin-top: var(--alpha-header);
+            min-height: calc(100vh - var(--alpha-header));
+            display: flex;
+            flex-direction: column;
+        }
+
+        /** Defines the height and stickiness of navbar **/
+        .navbar {
+            height: var(--alpha-header);
+            position: fixed;
+            padding: 1rem 0;
+            align-items: center;
+            display: flex;
+        }
+
+        /** controls which navbar to show based on screen width **/
+        @media screen and (min-width: 768px) {
+            #mobileNav {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            #mainNav {
+                display: none;
+            }
+        }
+
+        :root {
+            --alpha-blue: #546699;
+            --alpha-yellow: #fee355;
+            --alpha-grey: #c0bfbf;
+            --alpha-aqua: #58bdbd;
+            --alpha-purple: #868cb3;
+            --alpha-red: #d06233;
+            --alpha-green: #519943;
+            --alpha-unit: 32px;
+            --alpha-header: calc(3 * var(--alpha-unit));
+        }
+
+        /** demo styling **/
+        body.vibes footer,
+        body.vibes aside,
+        body.vibes article,
+        body.vibes header,
+        body.vibes #prefooter,
+        body.vibes #masthead,
+        body.vibes body,
+        body.vibes #mainNav,
+        body.vibes #mobileNav {
+            -webkit-box-shadow: inset 0px 0px 0px 4px #000;
+            -moz-box-shadow: inset 0px 0px 0px 4px #000;
+            box-shadow: inset 0px 0px 0px 4px #000;
+        }
+
+        body.vibes body {
+            background: var(--alpha-grey);
+        }
+
+        body.vibes header {
+            background-color: var(--alpha-aqua);
+        }
+
+        body.vibes #masthead {
+            background-color: var(--alpha-yellow);
+            height: calc(8 * var(--alpha-unit));
+            justify-content: center;
+            text-align: center;
+        }
+
+        body.vibes #content {
+            background-color: var(--alpha-blue);
+            height: calc(24 * var(--alpha-unit));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.vibes #sidebar {
+            background: var(--alpha-purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 300px;
+        }
+
+        body.vibes #prefooter {
+            background: var(--alpha-red);
+            justify-content: center;
+            text-align: center;
+            min-height: 192px;
+        }
+
+        body.vibes footer {
+            background: var(--alpha-green);
+            min-height: 300px;
+        }
+
+        body.vibes #mainNav {
+            background: var(--alpha-green);
+        }
+
+        body.vibes #mobileNav {
+            background: var(--alpha-red);
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <body class="vibes">
+        <!-- main nav bar area -->
+        <header>
+            <!-- Desktop/Laptop Menu -->
+            <nav id="mainNav" class="container-fluid navbar"></nav>
+            <!-- Mobile/Tablet Menu -->
+            <nav id="mobileNav" class="container-fluid navbar"></nav>
+        </header>
+        <!-- primary content area -->
+        <div class="page-wrapper">
+            <main>
+                <!-- Masthead -->
+                <section class="container-fluid">
+                    <div id="masthead" class="container"></div>
+                </section>
+                <!-- Primary Content Area -->
+                <section id="mainContent" class="container-fluid">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Sidebar -->
+                            <aside id="sidebar" class="col-md-3 order-2"></aside>
+                            <!-- article/content -->
+                            <article id="content" class="col-md-9 order-1"></article>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!-- Footer Areas -->
+            <div class="footer-wrapper">
+                <!-- Prefooter -->
+                <section id="prefooter" class="container-fluid"></section>
+                <!-- Footer -->
+                <footer class="container-fluid">
+                    <!-- footer menu area -->
+                    <div id="footerPrimary" class="container">
+                    </div>
+                    <!-- subfooter menu area -->
+                    <div id="subFooter" class="container">
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
