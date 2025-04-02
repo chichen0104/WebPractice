@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <script>
-        // 切換主題（light/dark）並儲存在 localStorage
+        // 切換主題（light/dark）並儲存到 localStorage
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -17,16 +17,12 @@
             localStorage.setItem('theme', newTheme);
         }
     </script>
-    <style>
-        /* 自定義格式清單 - 目前無特別要求使用 */
-        /* 如有需要可在此處增加 */
-    </style>
 </head>
 
 <body class="d-flex flex-column vh-100">
     <div class="d-flex flex-grow-1 overflow-hidden">
         <aside class="bg-body-tertiary text-body px-3 d-none d-md-flex flex-column justify-content-start"
-            style="width: 300px;">
+            style="width: 220px;">
             <div class="d-flex align-items-center p-3">
                 <i class="bi bi-person-circle fs-1 me-2"></i>
                 <div>
@@ -48,7 +44,7 @@
                     <button class="btn theme-toggle ms-3" onclick="toggleTheme()">
                         <i class="bi bi-moon-stars"></i>
                     </button>
-                    <h2 class="mb-0 text-center flex-grow-1 text-truncate">台北松山機場貴賓室管理系統</h2>
+                    <h2 class="mb-0 text-center flex-grow-1 text-truncate">台北東山機場貴賓室管理系統</h2>
                     <div class="d-block d-md-none ms-2">
                         <button class="btn theme-toggle border-0" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#mobileMenu" aria-controls="mobileMenu">
@@ -105,7 +101,7 @@
             { id: "page-account", icon: "bi-person-gear", label: "帳號管理" }
         ];
 
-        // 動態產生選單項目
+        // 根據 menuItems 動態產生選單
         function createMenu(navId) {
             const nav = document.getElementById(navId);
             nav.innerHTML = menuItems.map(item => `
@@ -116,7 +112,7 @@
                 </li>`).join('');
         }
 
-        // 頁面載入初始化選單與預設頁面
+        // 頁面初始化：建立選單並顯示第一個分頁
         document.addEventListener('DOMContentLoaded', () => {
             createMenu("menuNav");
             createMenu("menuNavDesktop");
@@ -124,7 +120,7 @@
             if (firstLink) firstLink.click();
         });
 
-        // 點擊選單切換頁面
+        // 點擊選單後切換對應分頁內容
         document.body.addEventListener('click', function (e) {
             const link = e.target.closest('a.nav-link');
             if (!link || !link.hasAttribute('data-target')) return;
@@ -133,18 +129,23 @@
             const targetId = link.getAttribute('data-target');
             const pageTitle = link.getAttribute('data-title');
 
+            // 隱藏所有分頁內容
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('d-none'));
+            // 顯示被選取的內容
             document.getElementById(targetId)?.classList.remove('d-none');
 
+            // 更新分頁標題
             const titleEl = document.getElementById('page-title');
             if (titleEl) titleEl.textContent = pageTitle;
 
+            // 更新選單項目的 active 樣式
             const allLinks = document.querySelectorAll('a.nav-link[data-target]');
             allLinks.forEach(l => l.classList.remove('active'));
             allLinks.forEach(l => {
                 if (l.getAttribute('data-target') === targetId) l.classList.add('active');
             });
 
+            // 若為手機畫面，自動關閉 offcanvas 選單
             const offcanvasEl = document.getElementById('mobileMenu');
             const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
             if (offcanvasInstance) offcanvasInstance.hide();
