@@ -80,35 +80,19 @@
     </div>
 
     <script>
-        // 選單項目定義
-        const navItems = [
-            { page: "vippage.html", icon: "bi-person-plus", label: "貴賓登錄" },
-            { page: "datapage.html", icon: "bi-bar-chart-line", label: "資料統計" },
-            { page: "printpage.html", icon: "bi-printer", label: "報表列印" },
-            { page: "rolemanag.html", icon: "bi-people", label: "角色管理" },
-            { page: "accountmanag.html", icon: "bi-person-gear", label: "帳號管理" }
-        ];
-
-        // 動態產生選單內容，填入指定的 UL 容器
-        function generateNavList(containerId) {
-            const ul = document.getElementById(containerId);
-            ul.innerHTML = navItems.map(item => `
-            <li class="nav-item">
-              <a class="nav-link px-3 py-2" href="#" data-page="${item.page}">
-                <i class="bi ${item.icon} me-2"></i>${item.label}
-              </a>
-            </li>`).join("");
-        }
-
-        // 主題管理物件：切換與初始化主題
+        //====================================
+        // 主題切換管理器
+        //====================================
         const ThemeManager = {
             toggle() {
                 const html = document.documentElement;
                 const iconElems = document.querySelectorAll('.theme-icon');
                 const isDark = html.getAttribute('data-bs-theme') === 'dark';
                 const newTheme = isDark ? 'light' : 'dark';
+
                 html.setAttribute('data-bs-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
+
                 iconElems.forEach(icon => {
                     icon.classList.remove('bi-sun', 'bi-moon');
                     icon.classList.add(newTheme === 'dark' ? 'bi-sun' : 'bi-moon');
@@ -126,68 +110,149 @@
             }
         };
 
-        // 根據目前網址設定選單項目的 active 狀態
-        function setActiveNav(url) {
-            document.querySelectorAll('a[data-page]').forEach(link => {
-                link.classList.toggle('active', link.getAttribute('data-page') === url);
-            });
-        }
+        //====================================
+        // 導航列管理器
+        //====================================
+        const NavigationManager = {
+            navItems: [
+                { page: "vippage.html", icon: "bi-person-plus", label: "貴賓登錄" },
+                { page: "datapage.html", icon: "bi-bar-chart-line", label: "資料統計" },
+                { page: "printpage.html", icon: "bi-printer", label: "報表列印" },
+                { page: "rolemanag.html", icon: "bi-people", label: "角色管理" },
+                { page: "accountmanag.html", icon: "bi-person-gear", label: "帳號管理" }
+            ],
 
-        // 非同步載入頁面內容，並更新標題與關閉 offcanvas（若存在）
-        async function loadPage(url, title) {
-            try {
-                const res = await fetch(url);
-                if (!res.ok) throw new Error("無法載入頁面");
-                const html = await res.text();
-                document.getElementById("main-content").innerHTML = html;
-                const pageTitle = document.getElementById("page-title");
-                if (pageTitle) pageTitle.textContent = title;
+            onNavigate: null, // 由外部註冊的回呼函式（要加載頁面的人註冊它）
+
+            init(onNavigateCallback) {
+                this.onNavigate = onNavigateCallback;
+                this.generateNavList("desktop-nav");
+                this.generateNavList("mobile-nav");
+
+                document.querySelectorAll('a[data-page]').forEach(link => {
+                    link.addEventListener('click', e => {
+                        e.preventDefault();
+                        const url = link.getAttribute('data-page');
+                        const title = link.textContent.trim();
+
+                        this.setActive(url);
+
+                        // 使用 callback 通知外部「我要跳頁了！」
+                        if (typeof this.onNavigate === 'function') {
+                            this.onNavigate(url, title);
+                        }
+                    });
+                });
+
+                if (this.navItems.length > 0) {
+                    const { page, label } = this.navItems[0];
+                    this.setActive(page);
+                    if (typeof this.onNavigate === 'function') {
+                        this.onNavigate(page, label);
+                    }
+                }
+            },
+
+            generateNavList(containerId) {
+                const ul = document.getElementById(containerId);
+                ul.innerHTML = this.navItems.map(item => `
+            <li class="nav-item">
+                <a class="nav-link px-3 py-2" href="#" data-page="${item.page}">
+                    <i class="bi ${item.icon} me-2"></i>${item.label}
+                </a>
+            </li>
+        `).join("");
+            },
+
+            setActive(url) {
+                document.querySelectorAll('a[data-page]').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-page') === url);
+                });
+            },
+
+            hideMobileMenu() {
                 const offcanvasEl = document.getElementById("mobileMenu");
                 const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
                 if (offcanvas) offcanvas.hide();
-            } catch (e) {
-                document.getElementById("main-content").innerHTML = `<div class='alert alert-danger text-center'>頁面載入失敗：${e.message}</div>`;
             }
-        }
+        };
 
-        // 初始化選單與點擊事件
-        function initNavigation() {
-            generateNavList("desktop-nav");
-            generateNavList("mobile-nav");
+        //====================================
+        // 頁面加載管理器
+        //====================================
+        const PageLoader = {
+            // 加載頁面並在完成後呼叫 onComplete callback（若有）
+            async load(url, title, onComplete) {
+                try {
+                    const res = await fetch(url);
+                    if (!res.ok) throw new Error("無法載入頁面");
 
-            document.querySelectorAll('a[data-page]').forEach(link => {
-                link.addEventListener('click', e => {
-                    e.preventDefault();
-                    const url = link.getAttribute('data-page');
-                    const title = link.textContent.trim();
-                    loadPage(url, title);
-                    setActiveNav(url);
-                });
-            });
+                    const html = await res.text();
 
-            // 預設選擇第一個 menu item 並載入對應頁面
-            if (navItems.length > 0) {
-                const firstItem = navItems[0];
-                loadPage(firstItem.page, firstItem.label);
-                setActiveNav(firstItem.page);
+                    const mainContent = document.getElementById("main-content");
+                    mainContent.innerHTML = html;
+
+                    const pageTitle = document.getElementById("page-title");
+                    if (pageTitle) pageTitle.textContent = title;
+
+                    // 把 script 抽出並動態執行
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    tempDiv.querySelectorAll('script').forEach(script => {
+                        const newScript = document.createElement('script');
+                        if (script.src) newScript.src = script.src;
+                        else newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+
+                    // 執行 __initPage（如果有）
+                    setTimeout(() => {
+                        if (typeof window.__initPage === 'function') {
+                            try {
+                                window.__initPage();
+                            } catch (e) {
+                                console.error('⚠️ 頁面初始化錯誤：', e);
+                            }
+                            delete window.__initPage;
+                        }
+                    }, 0);
+
+                    // 在載入完成後呼叫 callback
+                    if (typeof onComplete === 'function') {
+                        onComplete();
+                    }
+
+                } catch (e) {
+                    document.getElementById("main-content").innerHTML =
+                        `<div class='alert alert-danger text-center'>頁面載入失敗：${e.message}</div>`;
+                }
             }
-        }
+        };
 
-        // 頁面載入時執行主題與選單初始化
+
+        //====================================
+        // 初始化流程
+        //====================================
         document.addEventListener('DOMContentLoaded', () => {
             ThemeManager.applyInitialTheme();
-            initNavigation();
+
+            // 將 PageLoader.load 傳入當作 callback
+            NavigationManager.init((page, title) => {
+                PageLoader.load(page, title, () => {
+                    NavigationManager.hideMobileMenu();
+                });
+            });
         });
 
-        // 若從手機版切回桌面版，自動關閉手機選單
+
+        // 確保桌面版時隱藏手機選單
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 768) {
-                const offcanvasEl = document.getElementById("mobileMenu");
-                const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
-                if (offcanvas) offcanvas.hide();
+                NavigationManager.hideMobileMenu();
             }
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

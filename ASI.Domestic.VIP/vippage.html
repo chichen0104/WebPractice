@@ -1,8 +1,63 @@
 <style>
+    .blinking {
+        animation: blink 1s infinite;
+    }
 
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
 </style>
-<div>
-    <span>»</span>
-    <span>請掃描登機證</span>
-    <span>«</span>
+
+
+<div class="m-3">
+    <form class="d-flex flex-column text-center">
+
+        <label for="boardingpass">BoardingPass</label>
+        <input class="flex-grow-1" type="text" id="boardingpass">
+    </form>
+
+    <div class="mt-3" style="border: 2px red solid; ">
+        <div class="text-center fw-semibold my-5 fs-1">
+            <span class="blinking">»»»»</span>
+            <span class="blinking">請掃描登機證</span>
+            <span class="blinking">««««</span>
+        </div>
+    </div>
+
+
 </div>
+
+<script>
+    window.__initPage = function () {
+        const input = document.getElementById('boardingpass');
+        if (!input) return;
+
+        // 一開始先 focus
+        input.focus();
+
+        // 每次被移開 focus 就強制拉回
+        // blur 是一個 DOM 事件，中文可以理解為「失去焦點」。
+        input.addEventListener('blur', () => {
+            setTimeout(() => {
+                input.focus();
+            }, 0);
+        });
+
+        // 可選：防止按鍵 TAB 離開 focus
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+            }
+        });
+
+        console.log('強制 focus 綁定完成');
+    };
+</script>
